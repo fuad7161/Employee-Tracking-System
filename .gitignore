@@ -1,0 +1,19 @@
+# Intellij IDEA
+.idea
+
+# Mac OS
+.DS_Store
+
+# Golang
+coverage.out
+
+
+go.mod
+
+go.sum
+.env
+
+node_modules/
+package.json
+
+package-lock.json
