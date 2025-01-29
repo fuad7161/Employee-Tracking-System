@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Contact Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap JS and jQuery (needed for dropdowns) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        .ezy__nav7 {
+            /* Bootstrap variables */
+            --bs-body-color: #212529;
+            --bs-body-bg: rgb(255, 255, 255);
+
+            /* Easy Frontend variables */
+            --ezy-theme-color: rgb(13, 110, 253);
+            --ezy-theme-color-rgb: 13, 110, 253;
+
+            background-color: var(--bs-body-bg);
+        }
+
+        /* Gray Block Style */
+        .gray .ezy__nav7,
+        .ezy__nav7.gray {
+            /* Bootstrap variables */
+            --bs-body-bg: rgb(246, 246, 246);
+        }
+
+        /* Dark Gray Block Style */
+        .dark-gray .ezy__nav7,
+        .ezy__nav7.dark-gray {
+            /* Bootstrap variables */
+            --bs-body-color: #ffffff;
+            --bs-body-bg: rgb(30, 39, 53);
+        }
+
+        /* Dark Block Style */
+        .dark .ezy__nav7,
+        .ezy__nav7.dark {
+            /* Bootstrap variables */
+            --bs-body-color: #ffffff;
+            --bs-body-bg: rgb(11, 23, 39);
+        }
+
+        .ezy__nav7 .navbar-brand {
+            font-weight: 800;
+            font-size: 30px;
+            color: var(--bs-body-color);
+        }
+
+        .ezy__nav7 .navbar-toggler {
+            border: none;
+            box-shadow: none !important;
+        }
+
+        .ezy__nav7 .navbar-toggler>span {
+            display: flex;
+            align-items: center;
+            height: 32px;
+        }
+
+        .ezy__nav7 .navbar-toggler>span>span {
+            position: relative;
+        }
+
+        .ezy__nav7 .navbar-toggler>span>span,
+        .ezy__nav7 .navbar-toggler>span>span::before,
+        .ezy__nav7 .navbar-toggler>span>span::after {
+            height: 2px;
+            background-color: var(--bs-body-color);
+            width: 25px;
+            display: inline-block;
+            border-radius: 5px;
+            transition: all .35s ease-in-out;
+        }
+
+        .ezy__nav7 .navbar-toggler>span>span::before,
+        .ezy__nav7 .navbar-toggler>span>span::after {
+            content: '';
+            position: absolute;
+            left: 0;
+        }
+
+        .ezy__nav7 .navbar-toggler[aria-expanded="false"]>span>span::before {
+            top: 7px;
+        }
+
+        .ezy__nav7 .navbar-toggler[aria-expanded="false"]>span>span::after {
+            bottom: 7px;
+        }
+
+        .ezy__nav7 .navbar-toggler[aria-expanded="true"]>span>span {
+            background-color: transparent;
+        }
+
+        .ezy__nav7 .navbar-toggler[aria-expanded="true"]>span>span::before {
+            top: 0;
+            transform: rotate(-45deg);
+        }
+
+        .ezy__nav7 .navbar-toggler[aria-expanded="true"]>span>span::after {
+            bottom: 0;
+            transform: rotate(45deg);
+        }
+
+        .ezy__nav7 .navbar-nav .nav-link {
+            color: var(--bs-body-color);
+            opacity: .6;
+        }
+
+        .ezy__nav7 .navbar-nav .nav-link:hover,
+        .ezy__nav7 .navbar-nav .nav-link:focus,
+        .ezy__nav7 .navbar-nav .nav-link.active {
+            color: var(--bs-body-color);
+            opacity: 1;
+        }
+
+        @media (min-width: 992px) {
+            .ezy__nav7 .navbar-nav .nav-link {
+                padding-right: 16px;
+                padding-left: 16px;
+            }
+        }
+
+        .ezy__nav7 .btn {
+            border-radius: 10px;
+        }
+
+        .ezy__nav7-btn {
+            background-color: var(--ezy-theme-color);
+            color: #fff;
+        }
+        .ezy__nav7-btn:hover {
+            background-color: rgba(var(--ezy-theme-color-rgb), .9);
+            color: #fff;
+        }
+
+        .ezy__nav7 .btn-light {
+            background-color: rgba(var(--ezy-btn-color-rgb), .1);
+            border-color: rgba(var(--ezy-btn-color-rgb), .1);
+            color: var(--bs-body-color);
+        }
+
+        .ezy__nav7 .form-control {
+            min-height: 48px;
+            line-height: 40px;
+            border-color: transparent;
+            background: rgba(163, 190, 241, .14);
+            border-radius: 10px;
+            color: var(--bs-body-color);
+        }
+
+        .ezy__nav7 .form-control:focus {
+            border-color: #86b7fe;
+            box-shadow: none;
+        }
+        .ezy__footer1 {
+            /* Bootstrap variables */
+            --bs-body-color: #28303b;
+            --bs-body-bg: rgb(255, 255, 255);
+
+            /* Easy Frontend variables */
+            --ezy-theme-color: rgb(13, 110, 253);
+            --ezy-theme-color-rgb: 13, 110, 253;
+
+            background-color: var(--bs-body-bg);
+            color: var(--bs-body-color);
+            padding: 40px 0;
+        }
+
+        @media (min-width: 768px) {
+            .ezy__footer1 {
+                padding: 60px 0;
+            }
+        }
+
+        /* Gray Block Style */
+        .gray .ezy__footer1,
+        .ezy__footer1.gray {
+            /* Bootstrap variables */
+            --bs-body-bg: rgb(246, 246, 246);
+        }
+
+        /* Dark Gray Block Style */
+        .dark-gray .ezy__footer1,
+        .ezy__footer1.dark-gray {
+            /* Bootstrap variables */
+            --bs-body-color: #ffffff;
+            --bs-body-bg: rgb(30, 39, 53);
+        }
+
+        .dark .ezy__footer1,
+        .ezy__footer1.dark {
+            /* Bootstrap variables */
+            --bs-body-color: #ffffff;
+            --bs-body-bg: rgb(11, 23, 39);
+        }
+
+        .ezy__footer1-nav .nav-link {
+            color: var(--bs-body-color);
+        }
+
+        .ezy__footer1-nav .nav-link:hover {
+            color: var(--bs-body-color);
+            opacity: 0.8;
+        }
+
+        .ezy__footer1-social li {
+            list-style-type: none;
+            display: inline-block;
+            margin: 6px 8px;
+        }
+
+        .ezy__footer1-social li a {
+            color: var(--bs-body-color);
+            width: 35px;
+            height: 35px;
+            text-decoration: none;
+        }
+
+        .ezy__footer1-social li a:hover {
+            color: var(--ezy-theme-color);
+        }
+         .ezy__contact10 {
+             /* Bootstrap variables */
+             --bs-body-color: #28303b;
+             --bs-body-bg: rgb(255, 255, 255);
+
+             /* Easy Frontend variables */
+             --ezy-theme-color: rgb(13, 110, 253);
+             --ezy-theme-color-rgb: 13, 110, 253;
+             --ezy-form-card-bg: #F4F7FD;
+             --ezy-form-card-innor-bg: #ffffff;
+             --ezy-form-card-shadow: none;
+             --ezy-link-bg: #ffffff;
+             --ezy-link-hover-shadow: 0 16px 24px 0 rgba(197, 206, 222, .25);
+
+             background-color: var(--bs-body-bg);
+             overflow: hidden;
+             padding: 70px 0;
+         }
+
+        /* Gray Block Style */
+        .gray .ezy__contact10,
+        .ezy__contact10.gray {
+            /* Bootstrap variables */
+            --bs-body-bg: rgb(246, 246, 246);
+
+            /* easy frontend variables */
+            --ezy-form-card-bg: #ebebeb;
+            --ezy-form-card-innor-bg: #f6f6f6;
+            --ezy-form-card-shadow: none;
+            --ezy-link-bg: #f6f6f6;
+            --ezy-link-hover-shadow: 0 16px 24px 0 rgba(190, 205, 222, .25);
+        }
+
+        /* Dark Gray Block Style */
+        .dark-gray .ezy__contact10,
+        .ezy__contact10.dark-gray {
+            /* Bootstrap variables */
+            --bs-body-color: #ffffff;
+            --bs-body-bg: rgb(30, 39, 53);
+
+            /* Easy Frontend variables */
+            --ezy-form-card-bg: #24303f;
+            --ezy-form-card-innor-bg: #1f2b3b;
+            --ezy-form-card-shadow: none;
+            --ezy-link-bg: #24303f;
+            --ezy-link-hover-shadow: 0 16px 24px 0 rgba(40, 40, 40, .25);
+        }
+
+        /* Dark Block Style */
+        .dark .ezy__contact10,
+        .ezy__contact10.dark {
+            /* Bootstrap variables */
+            --bs-body-color: #ffffff;
+            --bs-body-bg: rgb(11, 23, 39);
+
+            /* Easy Frontend variables */
+            --ezy-form-card-bg: #1c293a;
+            --ezy-form-card-innor-bg: #162231;
+            --ezy-form-card-shadow: none;
+            --ezy-link-bg: #162231;
+            --ezy-link-hover-shadow: 0 16px 24px 0 rgba(44, 44, 44, .25);
+        }
+
+        @media (min-width: 768px) {
+            .ezy__contact10 {
+                padding: 20px 0;
+            }
+        }
+
+        .ezy__contact10-heading {
+            font-weight: bold;
+            font-size: 25px;
+            line-height: 25px;
+            color: var(--bs-body-color);
+        }
+
+        @media (min-width: 768px) {
+            .ezy__contact10-heading {
+                font-size: 45px;
+                line-height: 45px;
+            }
+        }
+
+        .ezy__contact10-sub-heading {
+            font-size: 18px;
+            line-height: 25px;
+            color: var(--bs-body-color);
+        }
+
+        .ezy__contact10-bg-holder {
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            min-height: 150px;
+            width: calc(100% - 56px);
+            margin-left: 56px;
+            border-radius: 10px;
+        }
+
+        @media (min-width: 991px) {
+            .ezy__contact10-bg-holder {
+                width: 50vw;
+                border-radius: 0;
+            }
+        }
+
+        .ezy__contact10-form-card {
+            background-color: var(--ezy-form-card-bg);
+            border: none;
+            box-shadow: var(--ezy-form-card-shadow);
+            border-radius: 15px;
+            padding: 25px;
+        }
+
+        .ezy__contact10-form-card .card-body {
+            background-color: var(--ezy-form-card-innor-bg);
+            border-radius: 15px;
+        }
+
+        .ezy__contact10 .form-control {
+            min-height: 48px;
+            line-height: 40px;
+            border-color: transparent;
+            background: rgba(163, 190, 241, .14);
+            border-radius: 10px;
+            color: var(--bs-body-color);
+        }
+
+        .ezy__contact10 .form-control:focus {
+            border-color: #86b7fe;
+            box-shadow: none;
+        }
+
+        .ezy__contact10-btn {
+            padding: 12px 30px;
+            color: #ffffff;
+            background-color: var(--ezy-theme-color);
+            border-color: var(--ezy-theme-color);
+        }
+
+        .ezy__contact10-btn:hover {
+            background-color: rgba(var(--ezy-theme-color-rgb), .9);
+            border-color: rgba(var(--ezy-theme-color-rgb), .9);
+            color: #ffffff;
+        }
+
+        .ezy__contact10-links {
+            width: 100%;
+            margin-left: -56px;
+        }
+
+        .ezy__contact10-link {
+            background-color: var(--ezy-link-bg);
+            border: none;
+            border-radius: 10px;
+            width: 100%;
+            transition: box-shadow .15s ease-in-out;
+        }
+
+        @media (min-width: 768px) {
+            .ezy__contact10-link {
+                max-width: 350px;
+            }
+        }
+
+        .ezy__contact10-icon,
+        .ezy__contact10-link .ezy__contact10-link-content {
+            color: var(--bs-body-color);
+        }
+
+        .ezy__contact10-link.active,
+        .ezy__contact10-link:hover {
+            box-shadow: var(--ezy-link-hover-shadow);
+        }
+
+        .ezy__contact10-link-content {
+            font-size: 18px;
+            font-weight: 500;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg flex-column navbar-light py-3 ezy__nav7">
+        <div class="container">
+            <a href="/" class="navbar-brand fs-2 fw-bold text-primary">LOGO</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#ezy_nav7-navbar-text"
+                    aria-controls="ezy_nav7-navbar-text" aria-expanded="false" aria-label="Toggle navigation">
+                    <span>
+                        <span></span>
+                    </span>
+            </button>
+            <div class="collapse navbar-collapse" id="ezy_nav7-navbar-text">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 mt-4 mt-lg-0">
+                    <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/admin/users">Users</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/admin/sbu">SBU</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/tasks">Task</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/clients">Clients</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/projects">Projects</a></li>
+                    {{ if .loggedIn }}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Profile
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/profile">Profile</a>
+                                <a class="dropdown-item" href="/logout">Logout</a>
+                            </div>
+                        </li>
+                    {{ else }}
+                        <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/tasks">Tasks</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/about-us">About us</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+                    {{ end }}
+
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-bs-toggle="collapse" data-bs-target="#ezy_nav7-navbar-search"
+                           aria-expanded="false" aria-controls="ezy_nav7-navbar-search">
+                            <span class="fas fa-search"></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="container">
+            <div class="collapse w-100" id="ezy_nav7-navbar-search">
+                <form class="mt-4">
+                    <div class="input-group">
+                        <input class="form-control px-3" type="search" placeholder="Tasks, Projects, Users" aria-label="Search" />
+                        <button class="btn ezy__nav7-btn px-3" type="submit">Search</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main id="main-content">
+    <section class="ezy__contact10 light">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-lg-6 order-lg-2 mb-3 mb-lg-0">
+                    <div class="ezy__contact10-bg-holder h-100 d-flex align-items-center py-5"
+                         style="background-image: url(https://cdn.easyfrontend.com/pictures/contact/contact_7.png);">
+                        <div class="ezy__contact10-links">
+                            <div class="card ezy__contact10-link">
+                                <div class="card-body d-flex align-items-center">
+                                    <i class="fas fa-envelope-open-text ezy__contact10-icon fs-3 px-2"></i>
+                                    <a class="ezy__contact10-link-content ms-4"
+                                       href="mailto:email@easyfrontend.com">*.*@brainstation.com</a>
+                                </div>
+                            </div>
+                            <div class="card ezy__contact10-link mt-4">
+                                <div class="card-body d-flex align-items-center">
+                                    <i class="fas fa-phone-alt ezy__contact10-icon fs-3 px-2"></i>
+                                    <a class="ezy__contact10-link-content ms-4" href="callto:123**56">+880
+                                        1000000000</a>
+                                </div>
+                            </div>
+                            <div class="card ezy__contact10-link mt-4">
+                                <div class="card-body d-flex align-items-center">
+                                    <i class="fas fa-hdd ezy__contact10-icon fs-3 px-2"></i>
+                                    <a class="ezy__contact10-link-content ms-4" href="https://brainstation-23.com" target="_blank">brainstation-23.com</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="card ezy__contact10-form-card">
+                        <div class="card-body p-md-5">
+                            <h2 class="ezy__contact10-heading mb-3">Contact Us</h2>
+                            <p class="ezy__contact10-sub-heading mb-5">We make your business better by providing the best
+                                software.</p>
+
+                            <form>
+                                <div class="form-group mb-3 mt-2">
+                                    <input type="text" class="form-control" placeholder="Enter Name" />
+                                </div>
+                                <div class="form-group mb-3 mt-2">
+                                    <input type="email" class="form-control" placeholder="Enter Email" />
+                                </div>
+                                <div class="form-group mb-3">
+								<textarea name="message" class="form-control" placeholder="Enter Message"
+                                          rows="3"></textarea>
+                                </div>
+                                <div class="text-end">
+                                    <button type="submit" class="btn btn-primary ezy__contact10-btn">Send</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <section class="ezy__footer1">
+        <div class="container">
+            <div class="row d-flex justify-content-between align-items-center">
+                <div class="col-lg-4">
+                    <p class="mb-lg-0">Copyright © ETS PLC.</p>
+                </div>
+                <div class="col-lg-4">
+                    <ul class="ezy__footer1-nav nav justify-content-center">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/about-us">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/contact-us">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 d-flex justify-content-center justify-content-lg-end">
+                    <ul class="ezy__footer1-social nav">
+                        <li>
+                            <a href="" class="border d-flex justify-content-center align-items-center rounded-circle"><i
+                                        class="fab fa-facebook-f"></i></a>
+                        </li>
+                        <li>
+                            <a href="" class="border d-flex justify-content-center align-items-center rounded-circle"><i
+                                        class="fab fa-twitter"></i></a>
+                        </li>
+                        <li>
+                            <a href="" class="border d-flex justify-content-center align-items-center rounded-circle"><i
+                                        class="fab fa-pinterest-p"></i></a>
+                        </li>
+                        <li>
+                            <a href="" class="border d-flex justify-content-center align-items-center rounded-circle"><i
+                                        class="fab fa-linkedin-in"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

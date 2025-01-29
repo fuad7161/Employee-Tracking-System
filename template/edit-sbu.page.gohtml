@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SBU Details</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap JS and jQuery (needed for dropdowns) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <style>
+        html, body {
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        .page-wrapper {
+            display: flex;
+            flex-direction: column;
+            min-height: 100%;
+        }
+        #main-content {
+            flex: 1;
+        }
+    </style>
+    <style>
+        .ezy__nav7 {
+            /* Bootstrap variables */
+            --bs-body-color: #212529;
+            --bs-body-bg: rgb(255, 255, 255);
+
+            /* Easy Frontend variables */
+            --ezy-theme-color: rgb(13, 110, 253);
+            --ezy-theme-color-rgb: 13, 110, 253;
+
+            background-color: var(--bs-body-bg);
+        }
+
+        /* Gray Block Style */
+        .gray .ezy__nav7,
+        .ezy__nav7.gray {
+            /* Bootstrap variables */
+            --bs-body-bg: rgb(246, 246, 246);
+        }
+
+        /* Dark Gray Block Style */
+        .dark-gray .ezy__nav7,
+        .ezy__nav7.dark-gray {
+            /* Bootstrap variables */
+            --bs-body-color: #ffffff;
+            --bs-body-bg: rgb(30, 39, 53);
+        }
+
+        /* Dark Block Style */
+        .dark .ezy__nav7,
+        .ezy__nav7.dark {
+            /* Bootstrap variables */
+            --bs-body-color: #ffffff;
+            --bs-body-bg: rgb(11, 23, 39);
+        }
+
+        .ezy__nav7 .navbar-brand {
+            font-weight: 800;
+            font-size: 30px;
+            color: var(--bs-body-color);
+        }
+
+        .ezy__nav7 .navbar-toggler {
+            border: none;
+            box-shadow: none !important;
+        }
+
+        .ezy__nav7 .navbar-toggler>span {
+            display: flex;
+            align-items: center;
+            height: 32px;
+        }
+
+        .ezy__nav7 .navbar-toggler>span>span {
+            position: relative;
+        }
+
+        .ezy__nav7 .navbar-toggler>span>span,
+        .ezy__nav7 .navbar-toggler>span>span::before,
+        .ezy__nav7 .navbar-toggler>span>span::after {
+            height: 2px;
+            background-color: var(--bs-body-color);
+            width: 25px;
+            display: inline-block;
+            border-radius: 5px;
+            transition: all .35s ease-in-out;
+        }
+
+        .ezy__nav7 .navbar-toggler>span>span::before,
+        .ezy__nav7 .navbar-toggler>span>span::after {
+            content: '';
+            position: absolute;
+            left: 0;
+        }
+
+        .ezy__nav7 .navbar-toggler[aria-expanded="false"]>span>span::before {
+            top: 7px;
+        }
+
+        .ezy__nav7 .navbar-toggler[aria-expanded="false"]>span>span::after {
+            bottom: 7px;
+        }
+
+        .ezy__nav7 .navbar-toggler[aria-expanded="true"]>span>span {
+            background-color: transparent;
+        }
+
+        .ezy__nav7 .navbar-toggler[aria-expanded="true"]>span>span::before {
+            top: 0;
+            transform: rotate(-45deg);
+        }
+
+        .ezy__nav7 .navbar-toggler[aria-expanded="true"]>span>span::after {
+            bottom: 0;
+            transform: rotate(45deg);
+        }
+
+        .ezy__nav7 .navbar-nav .nav-link {
+            color: var(--bs-body-color);
+            opacity: .6;
+        }
+
+        .ezy__nav7 .navbar-nav .nav-link:hover,
+        .ezy__nav7 .navbar-nav .nav-link:focus,
+        .ezy__nav7 .navbar-nav .nav-link.active {
+            color: var(--bs-body-color);
+            opacity: 1;
+        }
+
+        @media (min-width: 992px) {
+            .ezy__nav7 .navbar-nav .nav-link {
+                padding-right: 16px;
+                padding-left: 16px;
+            }
+        }
+
+        .ezy__nav7 .btn {
+            border-radius: 10px;
+        }
+
+        .ezy__nav7-btn {
+            background-color: var(--ezy-theme-color);
+            color: #fff;
+        }
+        .ezy__nav7-btn:hover {
+            background-color: rgba(var(--ezy-theme-color-rgb), .9);
+            color: #fff;
+        }
+
+        .ezy__nav7 .btn-light {
+            background-color: rgba(var(--ezy-btn-color-rgb), .1);
+            border-color: rgba(var(--ezy-btn-color-rgb), .1);
+            color: var(--bs-body-color);
+        }
+        footer {
+            background-color: #f8f9fa; /* Example footer background */
+            position: relative; /* So it can flow naturally */
+        }
+
+        /* Optional - if you want to have space around the footer icons */
+        .ezy__footer1-social {
+            gap: 10px;
+        }
+
+        .ezy__nav7 .form-control {
+            min-height: 48px;
+            line-height: 40px;
+            border-color: transparent;
+            background: rgba(163, 190, 241, .14);
+            border-radius: 10px;
+            color: var(--bs-body-color);
+        }
+
+        .ezy__nav7 .form-control:focus {
+            border-color: #86b7fe;
+            box-shadow: none;
+        }
+        .ezy__footer1 {
+            /* Bootstrap variables */
+            --bs-body-color: #28303b;
+            --bs-body-bg: rgb(255, 255, 255);
+
+            /* Easy Frontend variables */
+            --ezy-theme-color: rgb(13, 110, 253);
+            --ezy-theme-color-rgb: 13, 110, 253;
+
+            background-color: var(--bs-body-bg);
+            color: var(--bs-body-color);
+            padding: 40px 0;
+        }
+
+        @media (min-width: 768px) {
+            .ezy__footer1 {
+                padding: 60px 0;
+            }
+        }
+
+        /* Gray Block Style */
+        .gray .ezy__footer1,
+        .ezy__footer1.gray {
+            /* Bootstrap variables */
+            --bs-body-bg: rgb(246, 246, 246);
+        }
+
+        /* Dark Gray Block Style */
+        .dark-gray .ezy__footer1,
+        .ezy__footer1.dark-gray {
+            /* Bootstrap variables */
+            --bs-body-color: #ffffff;
+            --bs-body-bg: rgb(30, 39, 53);
+        }
+
+        .dark .ezy__footer1,
+        .ezy__footer1.dark {
+            /* Bootstrap variables */
+            --bs-body-color: #ffffff;
+            --bs-body-bg: rgb(11, 23, 39);
+        }
+
+        .ezy__footer1-nav .nav-link {
+            color: var(--bs-body-color);
+        }
+
+        .ezy__footer1-nav .nav-link:hover {
+            color: var(--bs-body-color);
+            opacity: 0.8;
+        }
+
+        .ezy__footer1-social li {
+            list-style-type: none;
+            display: inline-block;
+            margin: 6px 8px;
+        }
+
+        .ezy__footer1-social li a {
+            color: var(--bs-body-color);
+            width: 35px;
+            height: 35px;
+            text-decoration: none;
+        }
+
+        .ezy__footer1-social li a:hover {
+            color: var(--ezy-theme-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        <header>
+            <nav class="navbar navbar-expand-lg flex-column navbar-light py-3 ezy__nav7">
+                <div class="container">
+                    <a href="/" class="navbar-brand fs-2 fw-bold text-primary">LOGO</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#ezy_nav7-navbar-text"
+                            aria-controls="ezy_nav7-navbar-text" aria-expanded="false" aria-label="Toggle navigation">
+                    <span>
+                        <span></span>
+                    </span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="ezy_nav7-navbar-text">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 mt-4 mt-lg-0">
+                            <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/admin/users">Users</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/admin/sbu">SBU</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/tasks">Task</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/clients">Clients</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/projects">Projects</a></li>
+                            {{ if .loggedIn }}
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Profile
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="/profile">Profile</a>
+                                        <a class="dropdown-item" href="/logout">Logout</a>
+                                    </div>
+                                </li>
+                            {{ else }}
+                                <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+                            {{ end }}
+
+                            <li class="nav-item">
+                                <a href="#" class="nav-link" data-bs-toggle="collapse" data-bs-target="#ezy_nav7-navbar-search"
+                                   aria-expanded="false" aria-controls="ezy_nav7-navbar-search">
+                                    <span class="fas fa-search"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="collapse w-100" id="ezy_nav7-navbar-search">
+                        <form class="mt-4">
+                            <div class="input-group">
+                                <input class="form-control px-3" type="search" placeholder="Tasks, Projects, Users" aria-label="Search" />
+                                <button class="btn ezy__nav7-btn px-3" type="submit">Search</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <main id="main-content">
+            <section class="ezy__hero1">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <p class="lead">View SBU details below:</p>
+                            <form method="POST" action="/sbu/update/{{ .sbu.ID }}">
+                                <div class="form-group mb-3">
+                                    <label for="sbuName">SBU</label>
+                                    <input type="text" name="sbuName" id="sbuName" class="form-control"
+                                           value="{{ .subName }}" required>
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <label for="sbu_id">SBU Head</label>
+                                    <select name="sbu_head_id" id="sbu_head_id" class="form-control" required>
+                                        {{ range $id, $name := .userlst }}
+                                            <option value="{{ $id }}"
+                                                    {{ if eq $id $.sbu.SbuHeadUserID.Int64 }}selected{{ end }}>{{ $name }}</option>
+                                        {{ end }}
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Save Changes</button>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <footer>
+            <section class="ezy__footer1">
+                <div class="container">
+                    <div class="row d-flex justify-content-between align-items-center">
+                        <div class="col-lg-4">
+                            <p class="mb-lg-0">Copyright © ETS PLC.</p>
+                        </div>
+                        <div class="col-lg-4">
+                            <ul class="ezy__footer1-nav nav justify-content-center">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/about-us">About</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/contact-us">Contact</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-4 d-flex justify-content-center justify-content-lg-end">
+                            <ul class="ezy__footer1-social nav">
+                                <li>
+                                    <a href="" class="border d-flex justify-content-center align-items-center rounded-circle"><i
+                                                class="fab fa-facebook-f"></i></a>
+                                </li>
+                                <li>
+                                    <a href="" class="border d-flex justify-content-center align-items-center rounded-circle"><i
+                                                class="fab fa-twitter"></i></a>
+                                </li>
+                                <li>
+                                    <a href="" class="border d-flex justify-content-center align-items-center rounded-circle"><i
+                                                class="fab fa-pinterest-p"></i></a>
+                                </li>
+                                <li>
+                                    <a href="" class="border d-flex justify-content-center align-items-center rounded-circle"><i
+                                                class="fab fa-linkedin-in"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    </div>
+</body>
+</html>

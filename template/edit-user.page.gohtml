@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>User Profile</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap JS and jQuery (needed for dropdowns) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <style>
+        .profile-header {
+            background-color: #f8f9fa;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+        .profile-info {
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg flex-column navbar-light py-3 ezy__nav7">
+        <div class="container">
+            <a href="/" class="navbar-brand fs-2 fw-bold text-primary">LOGO</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#ezy_nav7-navbar-text"
+                    aria-controls="ezy_nav7-navbar-text" aria-expanded="false" aria-label="Toggle navigation">
+                    <span>
+                        <span></span>
+                    </span>
+            </button>
+            <div class="collapse navbar-collapse" id="ezy_nav7-navbar-text">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 mt-4 mt-lg-0">
+                    <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/admin/users">Users</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/admin/sbu">SBU</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/tasks">Task</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/clients">Clients</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/projects">Projects</a></li>
+                    {{ if .loggedIn }}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Profile
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/profile">Profile</a>
+                                <a class="dropdown-item" href="/logout">Logout</a>
+                            </div>
+                        </li>
+                    {{ else }}
+                        <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+                    {{ end }}
+
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-bs-toggle="collapse" data-bs-target="#ezy_nav7-navbar-search"
+                           aria-expanded="false" aria-controls="ezy_nav7-navbar-search">
+                            <span class="fas fa-search"></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="container">
+            <div class="collapse w-100" id="ezy_nav7-navbar-search">
+                <form class="mt-4">
+                    <div class="input-group">
+                        <input class="form-control px-3" type="search" placeholder="Tasks, Projects, Users" aria-label="Search" />
+                        <button class="btn ezy__nav7-btn px-3" type="submit">Search</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main id="main-content">
+    <section class="ezy__hero1">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="display-4">Welcome, {{ .user.Firstname }} {{ .user.Lastname }}</h1>
+                    <p class="lead">View your profile details below:</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Profile Info Section -->
+    <section class="profile-info-section py-5">
+        <div class="container">
+            <div class="col-lg-6 mx-auto">
+                <div class="profile-info">
+                    <h2 class="text-center">Edit User Profile</h2>
+                    <form method="POST" action="/admin/update-profile/{{ .user.ID }}">
+                        <div class="form-group mb-3">
+                            <label for="firstname">First Name</label>
+                            <input type="text" name="firstname" id="firstname" class="form-control"
+                                   value="{{ .user.Firstname }}" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="lastname">Last Name</label>
+                            <input type="text" name="lastname" id="lastname" class="form-control"
+                                   value="{{ .user.Lastname }}" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" id="email" class="form-control" value="{{ .user.Email }}"
+                                   required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="user_role_id">User Role</label>
+                            <select name="user_role_id" id="user_role_id" class="form-control" required>
+                                {{if .user.UserRoleID.Int64}}
+                                    {{ if .Roles }}
+                                        {{ range .Roles }}
+                                            <option value="{{ .ID }}"
+                                                    {{ if eq .ID $.user.UserRoleID.Int64 }}selected{{ end }}>{{ .RoleName }}</option>
+                                        {{ end }}
+                                    {{ else }}
+                                        <option value="">No roles available</option>
+                                    {{ end }}
+                                {{else}}
+                                    <option value="" disabled selected>Select a role</option>
+                                    {{ if .Roles }}
+                                        {{ range .Roles }}
+                                            <option value="{{ .ID }}">{{ .RoleName }}</option>
+                                        {{ end }}
+                                    {{ end }}
+                                {{ end }}
+                            </select>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="sbu_id">SBU</label>
+                            <select name="sbu_id" id="sbu_id" class="form-control" required>
+                                {{ if .user.SbuID.Int64 }}
+                                    {{ if .Sbus }}
+                                        {{ range .Sbus }}
+                                            <option value="{{ .ID }}"
+                                                    {{ if eq .ID $.user.SbuID.Int64 }}selected{{ end }}>{{ .SbuName.String }}</option>
+                                        {{ end }}
+                                    {{ else }}
+                                        <option value="">No SBUs available</option>
+                                    {{ end }}
+                                {{ else }}
+                                    <option value="" disabled selected>Select an SBU</option>
+                                    {{ if .Sbus }}
+                                        {{ range .Sbus }}
+                                            <option value="{{ .ID }}">{{ .SbuName.String }}</option>
+                                        {{ end }}
+                                    {{ end }}
+                                {{ end }}
+                            </select>
+                        </div>
+
+{{/*                        <div class="form-group mb-3">*/}}
+{{/*                            <label for="created_at">Created At</label>*/}}
+{{/*                            <input type="text" name="created_at" id="created_at" class="form-control"*/}}
+{{/*                                   value="{{ .user.CreatedAt }}" readonly>*/}}
+{{/*                        </div>*/}}
+                        <button type="submit" class="btn btn-primary w-100">Save Changes</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <section class="ezy__footer1">
+        <div class="container">
+            <div class="row d-flex justify-content-between align-items-center">
+                <div class="col-lg-4">
+                    <p class="mb-lg-0">Copyright © ETS PLC.</p>
+                </div>
+                <div class="col-lg-4">
+                    <ul class="ezy__footer1-nav nav justify-content-center">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/about-us">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/contact-us">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 d-flex justify-content-center justify-content-lg-end">
+                    <ul class="ezy__footer1-social nav">
+                        <li>
+                            <a href="" class="border d-flex justify-content-center align-items-center rounded-circle"><i
+                                        class="fab fa-facebook-f"></i></a>
+                        </li>
+                        <li>
+                            <a href="" class="border d-flex justify-content-center align-items-center rounded-circle"><i
+                                        class="fab fa-twitter"></i></a>
+                        </li>
+                        <li>
+                            <a href="" class="border d-flex justify-content-center align-items-center rounded-circle"><i
+                                        class="fab fa-pinterest-p"></i></a>
+                        </li>
+                        <li>
+                            <a href="" class="border d-flex justify-content-center align-items-center rounded-circle"><i
+                                        class="fab fa-linkedin-in"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
