@@ -2,8 +2,6 @@
 
 [![codecov](https://codecov.io/github/MahediSabuj/go-teams/graph/badge.svg?token=8KG0CEAU74)](https://codecov.io/github/MahediSabuj/go-teams)
 
-# Employee Tracking System
-
 The **Employee Tracking System** is a web application designed to manage employees, SBUs (Strategic Business Units),
 tasks, clients, and projects within a company. This system supports user authentication and role-based access, allowing
 users such as admins and normal employees to interact with the system effectively.
