@@ -1,0 +1,29 @@
+/* Reset some default margins and paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Full page layout */
+html, body {
+    height: 100%; /* Ensure the body takes up the full height of the viewport */
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    min-height: 100vh; /* Ensure the wrapper takes at least the full height of the viewport */
+}
+
+main {
+    flex: 1; /* Push the footer down when there's less content */
+    padding: 20px; /* Optional padding for your content */
+}
+
+footer {
+    background-color: #333; /* Example background color */
+    color: #fff; /* Example text color */
+    text-align: center; /* Center the text */
+    padding: 10px 0; /* Adjust padding as needed */
+}
